@@ -14,9 +14,12 @@ function printWordFreq(file, callback) {
     } else {
       const arrOfStopWordsRemoved = data
         .toLowerCase()
-        .replace(/[^\w\s]/g, "")
-        .split(" ")
+        .trim()
+        .replace(/[\.,?!]/g, "")
+        .split(/[^\w"!?""]+/)
         .filter((word) => !STOP_WORDS.includes(word));
+
+      console.log(arrOfStopWordsRemoved);
       // TODO: write code to count the words in the file
       // callback('Your word count results should be passed in to this callback') !!!!!!!!!!!! IDK
       let wordCount = {};
@@ -44,6 +47,5 @@ P)
   2) Remove STOP_WORDS
   3) Make a counter and callback the function till the last element in the array 
 */
-// console.log(data.toLowerCase().replace(/[^\w\s]/g, "").split(" "));
 
-//WIP: Don't understand callbacks
+//WIP: Don't understand callbacks, need to fix removing punctuation
